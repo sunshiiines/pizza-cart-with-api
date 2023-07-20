@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Perfect Users History</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="history.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="pizza.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div x-data="historicalWidget">
+        <div >
+            <br>
+            <a href="index.html"><strong>Pizza Perfect</strong></a>
+            <div>
+                <strong>Username: <span x-text="localStorage['username']"></span></strong>
+            </div>
+
+            <div class="">
+                <h3>Order History</h3>
+                <table class="cartTable">
+                    <thead>
+                        <tr>
+                            <th>Cart Code</th>
+                            <th>Username</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <template x-for="cart in userCartContent">
+                            <tr>
+                                <td x-text="cart.cart_code"></td>
+                                <td x-text="cart.username"></td>
+                                <td x-text="cart.status"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

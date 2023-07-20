@@ -38,3 +38,5 @@ Content-Type: application/json
     "cart_code" : "Fwz51eQ6jr",
     "amount" : 500
 }
+### Feature Pizzas
+POST https://api/pizzas/featured?username=your_sunshiiines
