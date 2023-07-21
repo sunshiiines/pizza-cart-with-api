@@ -161,7 +161,7 @@ document.addEventListener("alpine:init", () => {
                                 this.paymentAmount = 0;
                                 localStorage['cartId'] = '';
                                 this.createCart();
-                            }, 3000);
+                            }, 2000);
 
                         }
                     })

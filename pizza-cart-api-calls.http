@@ -38,5 +38,12 @@ Content-Type: application/json
     "cart_code" : "Fwz51eQ6jr",
     "amount" : 500
 }
-### Feature Pizzas
-POST https://api/pizzas/featured?username=your_sunshiiines
+### List of featured Pizzas
+GET https://pizza-api.projectcodex.net/api/pizzas/featured?username=sunshiiines
+### Fetaure Pizzas
+POST https://pizza-api.projectcodex.net/api/pizzas/featured
+Content-Type: application/json
+{
+    "cart_code" : "Fwz51eQ6jr",
+    "pizza_id" : 8
+}

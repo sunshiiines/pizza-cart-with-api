@@ -24,12 +24,12 @@
                 <br>
                 <a href="history.html">user history</a>
         </div>
-        <div  x-show="username && cartId" class="pizza small_pizza">
+        <div x-cloak x-show="username && cartId" class="pizza small_pizza">
             <button class="showbtn" x-show="username && cartId" @click="[open=!open,showCartData()]">view cart</button>
 
-            <div x-show="open && username && cartId">
-                <div x-text="message">message here</div>
+            <div x-cloak x-show="open && username && cartId">
                 <h2>Cart</h2>
+                <div class="message" x-text="message">message here</div>
                 <table class="cartTable">
                     <tr class="cartTable">
                         <th class="cartTable">Flavour</th>
@@ -67,11 +67,37 @@
         </div>
     </div>
     </div>
+    <div>
+        <div x-cloak class="pizzas container" x-show="username && cartId" style="text-align: center;">
+            <template x-for="pizza in showFeaturedpizzas.pizzas">
+                <div class="large_pizza col-md-4 ">
+                    <img src="images/large.png" width="40%">
+                    <br>
+                    <br>
+                    <h2 x-text="pizza.type"></h2>
+                    <br>
+                    <h4 x-text="pizza.flavour"></h4>
+                    <strong>
+                        <span x-text="pizza.price"></span>
+                        <span x-text="pizza.size"></span>
+                    </strong>
 
-    <div x-show="username && cartId">
+                    <br>
+                    <div> <!-- call the ID of the pizza -->
+                        <button class="btn btn-secondary"
+                            x-on:click="addPizzaToCart(pizza.id)"><strong>BUY</strong></button>
+                    </div>
+                </div>
+            </template>
+
+        </div>
+    </div>
+
+    <div x-cloak x-show="username && cartId">
         <div class="pizza large_pizza">
             <h2>Pizza Menu</h2>
             <template x-for="pizza in pizzas">
+                <template x-if="pizza['size']=='small'">
                 <div class=" cart pizza">
                     <table>
                         <tr class="pizzas">
@@ -83,23 +109,68 @@
                             <td>
                                 <h4 x-text="pizza.size"></h4>
                             </td>
-                            <!-- <span x-text="pizza.type"></span> -->
                             <td>
                                 <h4>R<span x-text="pizza.price"></span></h4>
                             </td>
-                            <td><button class="btn add" x-on:click="[open=true,addPizzaToCart(pizza.id)]">Add to
-                                    cart</button></td>
-                                    <td><button  @click="postfeaturedPizzas(pizza.id)">Feature</button></td>
+                            <td colspan="1"><button class="btn add" x-on:click="[open=true,addPizzaToCart(pizza.id)]">Add to Cart</button></td>
                         </tr>
                     </table>
                 </div>
         </div>
         </template>
+    </template>
+
+    <template x-for="pizza in pizzas">
+        <template x-if="pizza['size']=='medium'">
+        <div class=" cart pizza">
+            <table>
+                <tr class="pizzas">
+                    <td><img x-bind:src="image(pizza)" width="150%"></td>
+                    <td>
+                        <h2 x-text="pizza.flavour"></h2>
+                    </td>
+                    <td>
+                        <h4 x-text="pizza.size"></h4>
+                    </td>
+                    <td>
+                        <h4>R<span x-text="pizza.price"></span></h4>
+                    </td>
+                    <td colspan="1"><button class="btn add" x-on:click="[open=true,addPizzaToCart(pizza.id)]">Add to Cart</button></td>
+                </tr>
+            </table>
+        </div>
+</div>
+</template>
+</template>
+
+<template x-for="pizza in pizzas">
+    <template x-if="pizza['size']=='large'">
+    <div class=" cart pizza">
+        <table>
+            <tr class="pizzas">
+                <td><img x-bind:src="image(pizza)" width="150%"></td>
+                <td>
+                    <h2 x-text="pizza.flavour"></h2>
+                </td>
+                
+                <td>
+                    <h4 x-text="pizza.size"></h4>
+                </td>
+                <td>
+                    <h4>R<span x-text="pizza.price"></span></h4>
+                </td>
+                <td colspan="1"><button class="btn add" x-on:click="[open=true,addPizzaToCart(pizza.id)]">Add to Cart</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</template>
+</template>
     </div>
     </div>
     </div>
 
-    <div x-show="username && cartId">
+    <div x-cloak x-show="username && cartId">
         <section class="pizza contacts">
             <h2>Contact Details</h2>
             <div>call us on: 011 097 3749 </div>
